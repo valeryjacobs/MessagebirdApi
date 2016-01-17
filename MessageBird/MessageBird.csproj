@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C49CD3F8-BCDB-4BA9-B817-6A6C65452510}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MessageBird</RootNamespace>
+    <AssemblyName>MessageBird</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Runtime.Serialization" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Client.cs" />
+    <Compile Include="Exceptions\ErrorException.cs" />
+    <Compile Include="Json\Converters\RecipientsConverter.cs" />
+    <Compile Include="Json\Converters\RFC3339DateTimeConverter.cs" />
+    <Compile Include="Net\HttpStatusCode.cs" />
+    <Compile Include="Net\IRestClient.cs" />
+    <Compile Include="Net\ProxyConfigurationInjector\InjectCredentialsForProxiedUris.cs" />
+    <Compile Include="Net\ProxyConfigurationInjector\InjectWebProxy.cs" />
+    <Compile Include="Net\ProxyConfigurationInjector\IProxyConfigurationInjector.cs" />
+    <Compile Include="Net\ProxyConfigurationInjector\InjectDefaultCredentialsForProxiedUris.cs" />
+    <Compile Include="Net\RestClient.cs" />
+    <Compile Include="Objects\Balance.cs" />
+    <Compile Include="Objects\Error.cs" />
+    <Compile Include="Objects\Hlr.cs" />
+    <Compile Include="Objects\IIdentifiable.cs" />
+    <Compile Include="Objects\Message.cs" />
+    <Compile Include="Objects\Recipient.cs" />
+    <Compile Include="Objects\Recipients.cs" />
+    <Compile Include="Objects\VoiceMessage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Balance.cs" />
+    <Compile Include="Resources\Hlr.cs" />
+    <Compile Include="Resources\Messages.cs" />
+    <Compile Include="Resources\Resource.cs" />
+    <Compile Include="Resources\VoiceMessages.cs" />
+    <Compile Include="Utilities\ReflectionUtils.cs" />
+    <Compile Include="Utilities\Validation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
